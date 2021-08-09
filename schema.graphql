@@ -1,0 +1,27 @@
+type Book {
+  id: Int!
+  name: String!
+  store: String!
+  url: String!
+  currency: String!
+  salePrice: Float!
+  listPrice: Float!
+  createdAt: String!
+}
+
+enum Store {
+  BOOK_DEPOSITORY
+  GOOD_BOOK_COMPANY
+}
+
+type Query {
+  list: [Book]
+  get(id: Int!): Book
+  history(id: Int!, store: Store!): [Book]
+}
+
+type Mutation {
+  add(store: Store!, url: String!, name: String): Book
+  pull(id: Int!): Book
+  rename(id: Int!, name: String!): Book
+}
